@@ -17,7 +17,7 @@
         setInterval(updateCurrentVideo, 3000);
     </script>
 </head>
-<body class="bg-gray-900 text-white flex flex-col items-center p-6">
+<body class="bg-gray-900 text-white flex flex-col items-center">
 
     <h1 class="text-3xl font-bold mb-4">🎬 Gestion des Vidéos</h1>
 
@@ -49,14 +49,23 @@
             {% for file in files %}
             <li class="flex justify-between items-center bg-gray-700 p-3 rounded">
                 <span class="text-white">{{ file }}</span>
-                <div class="space-x-3">
-                    <a href="/play/{{ file }}" class="bg-green-500 hover:bg-green-600 text-white font-bold py-1 px-3 rounded">▶️ Lire</a>
-                    <a href="/delete/{{ file }}" class="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-3 rounded">❌ Supprimer</a>
+                <div class="flex gap-2">
+                    <a href="/play/{{ file }}" class="bg-green-500 hover:bg-green-600 text-white font-bold py-1 px-3 rounded flex items-center justify-center">
+                        <span class="hidden sm:inline">▶️ Lire</span>
+                        <span class="sm:hidden">▶️</span>
+                    </a>
+                    <a href="/delete/{{ file }}" class="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-3 rounded flex items-center">
+                        <span class="hidden sm:inline">❌ Supprimer</span>
+                        <span class="sm:hidden">❌</span>
+                    </a>
                 </div>
             </li>
             {% endfor %}
         </ul>
     </div>
+
+    {% include 'components/footer.html' %}
+
 
 </body>
 </html>
